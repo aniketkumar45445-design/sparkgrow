@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spark Grow | Accelerate Your Digital & Business Growth</title>
+  
+  <!-- Google Fonts: Chakra Petch & Orbitron for squared-off futuristic geometric display + Inter for clean body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@600;700;800&display=swap" rel="stylesheet" />
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Tailwind Configuration -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              950: '#030B2B',
+              900: '#040F38',
+              800: '#061447',
+              700: '#0A1E63',
+              600: '#10297D',
+            },
+            electric: {
+              400: '#339DFF',
+              500: '#0084FF',
+              600: '#0A7CFF',
+              700: '#0062CC',
+            }
+          },
+          fontFamily: {
+            display: ['"Chakra Petch"', '"Orbitron"', 'sans-serif'],
+            logo: ['"Orbitron"', '"Chakra Petch"', 'sans-serif'],
+            sans: ['"Inter"', 'sans-serif'],
+          },
+          boxShadow: {
+            'glow': '0 0 25px rgba(0, 132, 255, 0.35)',
+            'glow-lg': '0 0 40px rgba(0, 132, 255, 0.5)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom subtle background grid and geometric glows */
+    body {
+      background-color: #040F38;
+      color: #FFFFFF;
+      overflow-x: hidden;
+    }
+
+    .bg-tech-grid {
+      background-size: 44px 44px;
+      background-image: 
+        linear-gradient(to right, rgba(0, 132, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 132, 255, 0.08) 1px, transparent 1px);
+    }
+
+    .clip-corner {
+      clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+    }
+
+    .clip-btn {
+      clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+    }
+
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .animate-float {
+      animation: floatSlow 5s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased selection:bg-electric-500 selection:text-white">
+
+  <!-- ==================== STICKY NAVIGATION BAR ==================== -->
+  <header class="sticky top-0 z-50 bg-navy-900/90 backdrop-blur-md border-b border-electric-500/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Custom SVG Brand Logo (Exact SG Monogram + Stacked SPARK GROW Wordmark) -->
+        <a href="#home" class="flex items-center gap-3 group focus:outline-none" aria-label="Spark Grow Home">
+          <svg class="h-11 w-auto transition-transform duration-300 group-hover:scale-105" viewBox="0 0 280 86" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- White Geometric 'S' Monogram -->
+            <path d="M36 12H84L70 26H43L27 42L66 74H12L29 57L39 65H48L14 37L36 12Z" fill="#FFFFFF"/>
+            <!-- White Horizontal Connector Accent inside S/G -->
+            <path d="M51 39H85L73 51H59L51 39Z" fill="#FFFFFF"/>
+            <!-- Electric Blue 'G' with Sharp Upward Growth Arrow -->
+            <path d="M67 74L103 38L97 32L116 27L111 46L105 40L83 62H99V54L111 43V74H67Z" fill="#0084FF"/>
+            
+            <!-- Stacked Wordmark: SPARK (White) -->
+            <text x="128" y="42" fill="#FFFFFF" font-family="'Orbitron', 'Chakra Petch', sans-serif" font-weight="800" font-size="25" letter-spacing="1.5">SPARK</text>
+            <!-- Stacked Wordmark: GROW (Electric Blue) -->
+            <text x="128" y="72" fill="#0084FF" font-family="'Orbitron', 'Chakra Petch', sans-serif" font-weight="800" font-size="27" letter-spacing="2">GROW</text>
+          </svg>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center space-x-8">
+          <a href="#home" class="text-sm font-medium text-gray-200 hover:text-electric-400 transition-colors tracking-wide uppercase">Home</a>
+          <a href="#services" class="text-sm font-medium text-gray-200 hover:text-electric-400 transition-colors tracking-wide uppercase">Services</a>
+          <a href="#about" class="text-sm font-medium text-gray-200 hover:text-electric-400 transition-colors tracking-wide uppercase">About</a>
+          <a href="#contact" class="text-sm font-medium text-gray-200 hover:text-electric-400 transition-colors tracking-wide uppercase">Contact</a>
+        </nav>
+
+        <!-- Desktop CTA Button -->
+        <div class="hidden md:flex items-center gap-4">
+          <a href="#contact" class="clip-btn bg-electric-500 hover:bg-electric-600 text-white font-display font-bold text-sm uppercase tracking-wider px-6 py-3 shadow-glow hover:shadow-glow-lg transition-all duration-300">
+            Get Started
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden">
+          <button id="mobile-menu-btn" type="button" class="p-2.5 rounded-lg text-gray-200 hover:text-white hover:bg-navy-800 border border-electric-500/30 focus:outline-none" aria-label="Toggle Menu">
+            <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+            <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-navy-800 border-b border-electric-500/30 px-4 pt-3 pb-6 space-y-2">
+      <a href="#home" class="mobile-link block px-4 py-3 rounded-lg text-base font-display font-semibold uppercase tracking-wider text-white hover:bg-navy-700 hover:text-electric-400">Home</a>
+      <a href="#services" class="mobile-link block px-4 py-3 rounded-lg text-base font-display font-semibold uppercase tracking-wider text-white hover:bg-navy-700 hover:text-electric-400">Services</a>
+      <a href="#about" class="mobile-link block px-4 py-3 rounded-lg text-base font-display font-semibold uppercase tracking-wider text-white hover:bg-navy-700 hover:text-electric-400">About</a>
+      <a href="#contact" class="mobile-link block px-4 py-3 rounded-lg text-base font-display font-semibold uppercase tracking-wider text-white hover:bg-navy-700 hover:text-electric-400">Contact</a>
+      <div class="pt-2">
+        <a href="#contact" class="mobile-link block text-center clip-btn bg-electric-500 hover:bg-electric-600 text-white font-display font-bold uppercase tracking-wider px-6 py-3.5 shadow-glow">
+          Get Started
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section id="home" class="relative pt-16 pb-24 lg:pt-24 lg:pb-32 bg-tech-grid overflow-hidden">
+    <!-- Glowing ambient radial orbs -->
+    <div class="absolute top-10 -left-24 w-96 h-96 bg-electric-500/20 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-0 right-0 w-[30rem] h-[30rem] bg-electric-600/15 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Hero Copy -->
+        <div class="lg:col-span-7 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-md bg-navy-800/90 border border-electric-500/40 mb-6">
+            <span class="w-2.5 h-2.5 bg-electric-500 rounded-xs animate-pulse"></span>
+            <span class="font-display text-xs sm:text-sm font-bold uppercase tracking-widest text-electric-400">
+              Next-Gen Digital Growth Partner
+            </span>
+          </div>
+
+          <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold uppercase tracking-tight leading-tight text-white mb-6">
+            Ignite Your Brand. <br />
+            <span class="text-electric-500 drop-shadow-[0_0_15px_rgba(0,132,255,0.4)]">Accelerate</span> Exponential Growth.
+          </h1>
+
+          <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto lg:mx-0 mb-9 leading-relaxed">
+            Spark Grow transforms ambitious businesses into market leaders through high-converting websites, precision performance marketing, SEO dominance, and data-backed growth strategies.
+          </p>
+
+          <!-- Dual CTA Buttons -->
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+            <a href="#contact" class="w-full sm:w-auto clip-btn bg-electric-500 hover:bg-electric-600 text-white font-display font-bold text-base uppercase tracking-wider px-8 py-4 shadow-glow hover:shadow-glow-lg transition-all duration-300 flex items-center justify-center gap-2">
+              <span>Start Growing</span>
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+              </svg>
+            </a>
+            <a href="#services" class="w-full sm:w-auto clip-btn bg-navy-800/80 hover:bg-navy-700 text-white border border-electric-500/50 hover:border-electric-400 font-display font-bold text-base uppercase tracking-wider px-8 py-4 transition-all duration-300 text-center">
+              Explore Services
+            </a>
+          </div>
+
+          <!-- Quick Trust Bar -->
+          <div class="mt-12 pt-8 border-t border-electric-500/20 grid grid-cols-3 gap-4 max-w-lg mx-auto lg:mx-0">
+            <div>
+              <p class="font-display text-2xl sm:text-3xl font-bold text-white">250<span class="text-electric-500">+</span></p>
+              <p class="text-xs sm:text-sm text-slate-400 uppercase tracking-wider mt-0.5">Projects Delivered</p>
+            </div>
+            <div>
+              <p class="font-display text-2xl sm:text-3xl font-bold text-white">98<span class="text-electric-500">%</span></p>
+              <p class="text-xs sm:text-sm text-slate-400 uppercase tracking-wider mt-0.5">Client Retention</p>
+            </div>
+            <div>
+              <p class="font-display text-2xl sm:text-3xl font-bold text-white">3.4<span class="text-electric-500">x</span></p>
+              <p class="text-xs sm:text-sm text-slate-400 uppercase tracking-wider mt-0.5">Average ROI</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Hero Futuristic Growth Chart / Logo Visual -->
+        <div class="lg:col-span-5">
+          <div class="relative mx-auto max-w-md animate-float">
+            <!-- Outer Electric Glow Frame -->
+            <div class="clip-corner bg-gradient-to-br from-electric-500/40 via-navy-700 to-electric-600/30 p-[1.5px] shadow-glow-lg">
+              <div class="clip-corner bg-navy-800/95 p-6 sm:p-8 backdrop-blur-xl">
+                <!-- Card Top Header -->
+                <div class="flex items-center justify-between border-b border-electric-500/20 pb-4 mb-6">
+                  <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 bg-electric-500 inline-block"></span>
+                    <span class="font-display text-xs font-bold uppercase tracking-widest text-slate-300">Growth Trajectory</span>
+                  </div>
+                  <span class="px-2.5 py-1 text-xs font-display font-bold bg-electric-500/20 text-electric-400 border border-electric-500/40 rounded">
+                    +340% SCALE
+                  </span>
+                </div>
+
+                <!-- Futuristic Geometric SVG Growth Chart & SG Emblem -->
+                <div class="relative py-4">
+                  <svg viewBox="0 0 360 220" class="w-full h-auto" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Grid Lines -->
+                    <line x1="20" y1="180" x2="340" y2="180" stroke="#1E3A8A" stroke-width="1.5"/>
+                    <line x1="20" y1="135" x2="340" y2="135" stroke="#1E3A8A" stroke-dasharray="4 4" stroke-width="1"/>
+                    <line x1="20" y1="90" x2="340" y2="90" stroke="#1E3A8A" stroke-dasharray="4 4" stroke-width="1"/>
+                    <line x1="20" y1="45" x2="340" y2="45" stroke="#1E3A8A" stroke-dasharray="4 4" stroke-width="1"/>
+
+                    <!-- Geometric Bars -->
+                    <rect x="45" y="140" width="28" height="40" fill="#0A1E63" stroke="#0084FF" stroke-width="1.5"/>
+                    <rect x="100" y="115" width="28" height="65" fill="#0A1E63" stroke="#0084FF" stroke-width="1.5"/>
+                    <rect x="155" y="95" width="28" height="85" fill="#10297D" stroke="#0084FF" stroke-width="1.5"/>
+                    <rect x="210" y="68" width="28" height="112" fill="#0062CC" stroke="#339DFF" stroke-width="1.5"/>
+                    <rect x="265" y="34" width="32" height="146" fill="#0084FF" stroke="#FFFFFF" stroke-width="1.5"/>
+
+                    <!-- Sharp Upward Arrow Path matching Logo -->
+                    <path d="M40 155L115 110L170 118L240 60L315 22" stroke="#FFFFFF" stroke-width="4" stroke-linecap="square"/>
+                    <polygon points="325,16 300,18 318,38" fill="#FFFFFF"/>
+
+                    <!-- Glowing Nodes -->
+                    <rect x="111" y="106" width="8" height="8" fill="#0084FF" stroke="#FFFFFF" stroke-width="2"/>
+                    <rect x="166" y="114" width="8" height="8" fill="#0084FF" stroke="#FFFFFF" stroke-width="2"/>
+                    <rect x="236" y="56" width="8" height="8" fill="#0084FF" stroke="#FFFFFF" stroke-width="2"/>
+                  </svg>
+                </div>
+
+                <!-- Bottom Metric Pills -->
+                <div class="grid grid-cols-2 gap-3 mt-4">
+                  <div class="bg-navy-900/90 border border-electric-500/25 p-3.5 rounded-lg">
+                    <p class="text-xs text-slate-400 uppercase font-medium">Lead Velocity</p>
+                    <p class="font-display text-lg font-bold text-white mt-0.5">+185% <span class="text-electric-400 text-xs">MoM</span></p>
+                  </div>
+                  <div class="bg-navy-900/90 border border-electric-500/25 p-3.5 rounded-lg">
+                    <p class="text-xs text-slate-400 uppercase font-medium">Conversion Lift</p>
+                    <p class="font-display text-lg font-bold text-electric-400 mt-0.5">+94.2% <span class="text-white text-xs">AVG</span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SERVICES SECTION ==================== -->
+  <section id="services" class="py-20 lg:py-28 bg-navy-950/70 border-y border-electric-500/15 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="font-display text-xs sm:text-sm font-bold uppercase tracking-widest text-electric-400 block mb-3">
+          // What We Engineer
+        </span>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold uppercase text-white mb-4">
+          High-Impact <span class="text-electric-500">Growth</span> Solutions
+        </h2>
+        <p class="text-slate-300 text-base sm:text-lg">
+          End-to-end digital execution tailored to scale your traffic, capture qualified leads, and maximize revenue.
+        </p>
+      </div>
+
+      <!-- 6 Modern Service Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+        
+        <!-- Service 1 -->
+        <div class="group clip-corner bg-navy-800/80 border border-electric-500/25 hover:border-electric-500 p-7 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-glow">
+          <div class="w-14 h-14 rounded-lg bg-electric-500/15 border border-electric-500/40 flex items-center justify-center text-electric-400 group-hover:bg-electric-500 group-hover:text-white transition-colors mb-6">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+            </svg>
+          </div>
+          <h3 class="font-display text-xl font-bold uppercase text-white mb-3 group-hover:text-electric-400 transition-colors">
+            Digital Marketing & SEO
+          </h3>
+          <p class="text-slate-300 text-sm leading-relaxed mb-5">
+            Dominate search rankings and capture high-intent organic traffic with technical SEO, content authority, and local search optimization.
+          </p>
+          <a href="#contact" class="inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-wider text-electric-400 group-hover:text-white transition-colors">
+            <span>Scale Traffic</span>
+            <span>&rarr;</span>
+          </a>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="group clip-corner bg-navy-800/80 border border-electric-500/25 hover:border-electric-500 p-7 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-glow">
+          <div class="w-14 h-14 rounded-lg bg-electric-500/15 border border-electric-500/40 flex items-center justify-center text-electric-400 group-hover:bg-electric-500 group-hover:text-white transition-colors mb-6">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+            </svg>
+          </div>
+          <h3 class="font-display text-xl font-bold uppercase text-white mb-3 group-hover:text-electric-400 transition-colors">
+            Web & App Development
+          </h3>
+          <p class="text-slate-300 text-sm leading-relaxed mb-5">
+            Blazing-fast, responsive, and conversion-engineered websites, e-commerce stores, and custom web applications built for modern users.
+          </p>
+          <a href="#contact" class="inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-wider text-electric-400 group-hover:text-white transition-colors">
+            <span>Build Platform</span>
+            <span>&rarr;</span>
+          </a>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="group clip-corner bg-navy-800/80 border border-electric-500/25 hover:border-electric-500 p-7 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-glow">
+          <div class="w-14 h-14 rounded-lg bg-electric-500/15 border border-electric-500/40 flex items-center justify-center text-electric-400 group-hover:bg-electric-500 group-hover:text-white transition-colors mb-6">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"/>
+              <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"/>
+            </svg>
+          </div>
+          <h3 class="font-display text-xl font-bold uppercase text-white mb-3 group-hover:text-electric-400 transition-colors">
+            Performance Ads & Leads
+          </h3>
+          <p class="text-slate-300 text-sm leading-relaxed mb-5">
+            ROI-obsessed Meta, Google, and YouTube ad campaigns designed to lower acquisition costs and deliver predictable daily sales leads.
+          </p>
+          <a href="#contact" class="inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-wider text-electric-400 group-hover:text-white transition-colors">
+            <span>Generate Leads</span>
+            <span>&rarr;</span>
+          </a>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="group clip-corner bg-navy-800/80 border border-electric-500/25 hover:border-electric-500 p-7 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-glow">
+          <div class="w-14 h-14 rounded-lg bg-electric-500/15 border border-electric-500/40 flex items-center justify-center text-electric-400 group-hover:bg-electric-500 group-hover:text-white transition-colors mb-6">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+            </svg>
+          </div>
+          <h3 class="font-display text-xl font-bold uppercase text-white mb-3 group-hover:text-electric-400 transition-colors">
+            Brand Strategy & Identity
+          </h3>
+          <p class="text-slate-300 text-sm leading-relaxed mb-5">
+            Distinctive brand positioning, visual identity systems, and compelling messaging that make your business unforgettable in crowded markets.
+          </p>
+          <a href="#contact" class="inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-wider text-electric-400 group-hover:text-white transition-colors">
+            <span>Elevate Brand</span>
+            <span>&rarr;</span>
+          </a>
+        </div>
+
+        <!-- Service 5 -->
+        <div class="group clip-corner bg-navy-800/80 border border-electric-500/25 hover:border-electric-500 p-7 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-glow">
+          <div class="w-14 h-14 rounded-lg bg-electric-500/15 border border-electric-500/40 flex items-center justify-center text-electric-400 group-hover:bg-electric-500 group-hover:text-white transition-colors mb-6">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"/>
+            </svg>
+          </div>
+          <h3 class="font-display text-xl font-bold uppercase text-white mb-3 group-hover:text-electric-400 transition-colors">
+            Social Media Growth
+          </h3>
+          <p class="text-slate-300 text-sm leading-relaxed mb-5">
+            High-engagement reels, viral content calendars, and community management across Instagram, LinkedIn, and YouTube to build loyal audiences.
+          </p>
+          <a href="#contact" class="inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-wider text-electric-400 group-hover:text-white transition-colors">
+            <span>Boost Reach</span>
+            <span>&rarr;</span>
+          </a>
+        </div>
+
+        <!-- Service 6 -->
+        <div class="group clip-corner bg-navy-800/80 border border-electric-500/25 hover:border-electric-500 p-7 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-glow">
+          <div class="w-14 h-14 rounded-lg bg-electric-500/15 border border-electric-500/40 flex items-center justify-center text-electric-400 group-hover:bg-electric-500 group-hover:text-white transition-colors mb-6">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+            </svg>
+          </div>
+          <h3 class="font-display text-xl font-bold uppercase text-white mb-3 group-hover:text-electric-400 transition-colors">
+            Growth Consulting & CRO
+          </h3>
+          <p class="text-slate-300 text-sm leading-relaxed mb-5">
+            Deep funnel audits, conversion rate optimization, and automated CRM workflows that turn more of your existing clicks into paying customers.
+          </p>
+          <a href="#contact" class="inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-wider text-electric-400 group-hover:text-white transition-colors">
+            <span>Optimize Funnel</span>
+            <span>&rarr;</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ABOUT US SECTION ==================== -->
+  <section id="about" class="py-20 lg:py-28 bg-tech-grid relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Visual / Metrics Grid -->
+        <div class="lg:col-span-6 order-2 lg:order-1">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            
+            <div class="clip-corner bg-navy-800/90 border border-electric-500/30 p-6 shadow-lg">
+              <div class="text-electric-500 font-display text-4xl font-bold mb-2">250+</div>
+              <div class="font-display text-sm font-bold uppercase text-white tracking-wider mb-1">Successful Projects</div>
+              <p class="text-xs text-slate-400">Delivered across startups, D2C brands, and local enterprises.</p>
+            </div>
+
+            <div class="clip-corner bg-navy-800/90 border border-electric-500/30 p-6 shadow-lg sm:translate-y-4">
+              <div class="text-electric-500 font-display text-4xl font-bold mb-2">98%</div>
+              <div class="font-display text-sm font-bold uppercase text-white tracking-wider mb-1">Client Retention</div>
+              <p class="text-xs text-slate-400">Long-term partnerships built on transparent weekly reporting.</p>
+            </div>
+
+            <div class="clip-corner bg-navy-800/90 border border-electric-500/30 p-6 shadow-lg">
+              <div class="text-electric-500 font-display text-4xl font-bold mb-2">3x</div>
+              <div class="font-display text-sm font-bold uppercase text-white tracking-wider mb-1">Average Client ROI</div>
+              <p class="text-xs text-slate-400">Data-backed campaigns focused strictly on bottom-line revenue.</p>
+            </div>
+
+            <div class="clip-corner bg-electric-500 p-6 shadow-glow sm:translate-y-4">
+              <div class="text-white font-display text-4xl font-bold mb-2">24/7</div>
+              <div class="font-display text-sm font-bold uppercase text-navy-950 tracking-wider mb-1">Dedicated Support</div>
+              <p class="text-xs text-white/90">Direct access to growth strategists based in New Delhi.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right Mission & Approach Copy -->
+        <div class="lg:col-span-6 order-1 lg:order-2">
+          <span class="font-display text-xs sm:text-sm font-bold uppercase tracking-widest text-electric-400 block mb-3">
+            // About Spark Grow
+          </span>
+          <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold uppercase text-white leading-tight mb-6">
+            Where Sharp Strategy Meets <span class="text-electric-500">Relentless Execution</span>
+          </h2>
+          <p class="text-slate-300 text-base leading-relaxed mb-6">
+            Founded with a clear mission to bridge the gap between creative branding and measurable revenue, <strong class="text-white">Spark Grow</strong> empowers businesses in New Delhi and across India to scale rapidly in the digital economy.
+          </p>
+          <p class="text-slate-300 text-base leading-relaxed mb-8">
+            We don't believe in vanity metrics. Every pixel we design, every line of code we deploy, and every ad rupee we invest is engineered around one core goal: <span class="text-electric-400 font-semibold">upward business trajectory.</span>
+          </p>
+
+          <!-- Key Pillars -->
+          <div class="space-y-4 mb-8">
+            <div class="flex items-start gap-3.5">
+              <div class="w-6 h-6 rounded bg-electric-500/20 border border-electric-500 flex items-center justify-center text-electric-400 shrink-0 mt-0.5">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-display text-sm font-bold uppercase text-white">Data-First Precision</h4>
+                <p class="text-sm text-slate-400">Real-time analytics and A/B testing guide every decision we make.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3.5">
+              <div class="w-6 h-6 rounded bg-electric-500/20 border border-electric-500 flex items-center justify-center text-electric-400 shrink-0 mt-0.5">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-display text-sm font-bold uppercase text-white">Tailored Growth Blueprints</h4>
+                <p class="text-sm text-slate-400">Custom roadmaps built around your industry, budget, and revenue targets.</p>
+              </div>
+            </div>
+          </div>
+
+          <a href="#contact" class="inline-flex items-center gap-2 clip-btn bg-electric-500 hover:bg-electric-600 text-white font-display font-bold text-sm uppercase tracking-wider px-7 py-3.5 shadow-glow transition-all">
+            <span>Book Free Strategy Call</span>
+            <span>&rarr;</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CONTACT SECTION ==================== -->
+  <section id="contact" class="py-20 lg:py-28 bg-navy-950/80 border-t border-electric-500/20 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="font-display text-xs sm:text-sm font-bold uppercase tracking-widest text-electric-400 block mb-3">
+          // Let's Connect
+        </span>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold uppercase text-white mb-4">
+          Ready To <span class="text-electric-500">Spark</span> Your Growth?
+        </h2>
+        <p class="text-slate-300 text-base sm:text-lg">
+          Reach out directly or drop your project details below. Our team will get back to you with an actionable growth plan.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        
+        <!-- Left Contact Info Cards -->
+        <div class="lg:col-span-5 space-y-5">
+          
+          <!-- Email Card -->
+          <div class="clip-corner bg-navy-800/90 border border-electric-500/30 p-6 flex items-start gap-4 hover:border-electric-500 transition-colors">
+            <div class="w-12 h-12 rounded-lg bg-electric-500/15 border border-electric-500/40 flex items-center justify-center text-electric-400 shrink-0">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <div class="min-w-0 flex-1">
+              <p class="font-display text-xs font-bold uppercase tracking-wider text-electric-400 mb-1">Email Us</p>
+              <a href="mailto:aniketkumar45445@gmail.com" class="text-white font-medium text-base sm:text-lg hover:text-electric-400 transition-colors break-all">
+                aniketkumar45445@gmail.com
+              </a>
+            </div>
+          </div>
+
+          <!-- Phone Card -->
+          <div class="clip-corner bg-navy-800/90 border border-electric-500/30 p-6 flex items-start gap-4 hover:border-electric-500 transition-colors">
+            <div class="w-12 h-12 rounded-lg bg-electric-500/15 border border-electric-500/40 flex items-center justify-center text-electric-400 shrink-0">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="font-display text-xs font-bold uppercase tracking-wider text-electric-400 mb-1">Call / WhatsApp</p>
+              <a href="tel:+917367853074" class="text-white font-medium text-base sm:text-lg hover:text-electric-400 transition-colors">
+                +91 7367853074
+              </a>
+            </div>
+          </div>
+
+          <!-- Address Card -->
+          <div class="clip-corner bg-navy-800/90 border border-electric-500/30 p-6 flex items-start gap-4 hover:border-electric-500 transition-colors">
+            <div class="w-12 h-12 rounded-lg bg-electric-500/15 border border-electric-500/40 flex items-center justify-center text-electric-400 shrink-0">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="font-display text-xs font-bold uppercase tracking-wider text-electric-400 mb-1">Office Location</p>
+              <p class="text-white font-medium text-base sm:text-lg">
+                Aya Nagar, New Delhi
+              </p>
+            </div>
+          </div>
+
+          <!-- Quick Action WhatsApp & Call Buttons -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+            <a href="https://wa.me/917367853074?text=Hello%20Spark%20Grow!%20I%20would%20like%20to%20discuss%20growing%20my%20business." target="_blank" rel="noopener noreferrer" class="clip-btn bg-[#16A34A] hover:bg-[#15803D] text-white font-display font-bold text-sm uppercase tracking-wider py-3.5 px-4 flex items-center justify-center gap-2 transition-all shadow-md">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/>
+              </svg>
+              <span>WhatsApp Now</span>
+            </a>
+
+            <a href="tel:+917367853074" class="clip-btn bg-navy-700 hover:bg-navy-600 border border-electric-500/50 text-white font-display font-bold text-sm uppercase tracking-wider py-3.5 px-4 flex items-center justify-center gap-2 transition-all">
+              <svg class="w-5 h-5 text-electric-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+              </svg>
+              <span>Call Direct</span>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Right Interactive Inquiry Form -->
+        <div class="lg:col-span-7">
+          <div class="clip-corner bg-navy-800/95 border border-electric-500/35 p-6 sm:p-10 shadow-glow">
+            <h3 class="font-display text-2xl font-bold uppercase text-white mb-2">Send Us An Inquiry</h3>
+            <p class="text-sm text-slate-400 mb-6">Fill in your details and we will craft a tailored growth roadmap for your business.</p>
+
+            <form id="contact-form" class="space-y-5">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div>
+                  <label for="name" class="block font-display text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Full Name *</label>
+                  <input type="text" id="name" name="name" required placeholder="Enter your name"
+                    class="w-full rounded-lg bg-navy-900 border border-electric-500/30 focus:border-electric-500 focus:ring-2 focus:ring-electric-500/30 text-white placeholder-slate-500 px-4 py-3 text-sm outline-none transition-all" />
+                </div>
+
+                <div>
+                  <label for="phone" class="block font-display text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Phone Number *</label>
+                  <input type="tel" id="phone" name="phone" required placeholder="+91 98765 43210"
+                    class="w-full rounded-lg bg-navy-900 border border-electric-500/30 focus:border-electric-500 focus:ring-2 focus:ring-electric-500/30 text-white placeholder-slate-500 px-4 py-3 text-sm outline-none transition-all" />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div>
+                  <label for="email" class="block font-display text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Email Address *</label>
+                  <input type="email" id="email" name="email" required placeholder="you@company.com"
+                    class="w-full rounded-lg bg-navy-900 border border-electric-500/30 focus:border-electric-500 focus:ring-2 focus:ring-electric-500/30 text-white placeholder-slate-500 px-4 py-3 text-sm outline-none transition-all" />
+                </div>
+
+                <div>
+                  <label for="service" class="block font-display text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Service Needed *</label>
+                  <select id="service" name="service" required
+                    class="w-full rounded-lg bg-navy-900 border border-electric-500/30 focus:border-electric-500 focus:ring-2 focus:ring-electric-500/30 text-white px-4 py-3 text-sm outline-none transition-all">
+                    <option value="Digital Marketing & SEO">Digital Marketing & SEO</option>
+                    <option value="Web & App Development">Web & App Development</option>
+                    <option value="Performance Ads & Lead Generation">Performance Ads & Lead Generation</option>
+                    <option value="Brand Strategy & Growth Consulting">Brand Strategy & Growth Consulting</option>
+                    <option value="Social Media Management">Social Media Management</option>
+                    <option value="Full-Stack Business Growth">Full-Stack Business Growth</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label for="message" class="block font-display text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Project Details *</label>
+                <textarea id="message" name="message" rows="4" required placeholder="Tell us about your business goals, target audience, and timeline..."
+                  class="w-full rounded-lg bg-navy-900 border border-electric-500/30 focus:border-electric-500 focus:ring-2 focus:ring-electric-500/30 text-white placeholder-slate-500 px-4 py-3 text-sm outline-none transition-all"></textarea>
+              </div>
+
+              <button type="submit" class="w-full clip-btn bg-electric-500 hover:bg-electric-600 text-white font-display font-bold text-base uppercase tracking-wider py-4 px-8 shadow-glow hover:shadow-glow-lg transition-all duration-300 flex items-center justify-center gap-2">
+                <span>Launch Growth Inquiry</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                </svg>
+              </button>
+            </form>
+
+            <!-- Instant Confirmation Message Box (Hidden until submit) -->
+            <div id="form-feedback" class="hidden mt-6 p-5 rounded-lg bg-electric-500/15 border border-electric-500 text-white">
+              <div class="flex items-start gap-3">
+                <div class="w-7 h-7 rounded-full bg-electric-500 flex items-center justify-center text-white shrink-0 mt-0.5">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <h4 class="font-display text-base font-bold uppercase text-white">Inquiry Received!</h4>
+                  <p id="feedback-text" class="text-sm text-slate-200 mt-1"></p>
+                  <div class="mt-3 flex flex-wrap gap-3">
+                    <a id="direct-mailto-btn" href="mailto:aniketkumar45445@gmail.com" class="inline-flex items-center gap-1.5 text-xs font-display font-bold uppercase tracking-wider bg-electric-500 hover:bg-electric-600 text-white px-4 py-2 rounded transition-colors">
+                      Send via Email App &rarr;
+                    </a>
+                    <button type="button" id="reset-form-btn" class="text-xs font-display font-bold uppercase tracking-wider text-slate-300 hover:text-white underline">
+                      Send Another Message
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-navy-950 border-t border-electric-500/20 pt-14 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-electric-500/15">
+        
+        <!-- Brand Column -->
+        <div class="lg:col-span-5">
+          <a href="#home" class="inline-block mb-4" aria-label="Spark Grow Footer Logo">
+            <svg class="h-11 w-auto" viewBox="0 0 280 86" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M36 12H84L70 26H43L27 42L66 74H12L29 57L39 65H48L14 37L36 12Z" fill="#FFFFFF"/>
+              <path d="M51 39H85L73 51H59L51 39Z" fill="#FFFFFF"/>
+              <path d="M67 74L103 38L97 32L116 27L111 46L105 40L83 62H99V54L111 43V74H67Z" fill="#0084FF"/>
+              <text x="128" y="42" fill="#FFFFFF" font-family="'Orbitron', 'Chakra Petch', sans-serif" font-weight="800" font-size="25" letter-spacing="1.5">SPARK</text>
+              <text x="128" y="72" fill="#0084FF" font-family="'Orbitron', 'Chakra Petch', sans-serif" font-weight="800" font-size="27" letter-spacing="2">GROW</text>
+            </svg>
+          </a>
+          <p class="text-slate-400 text-sm leading-relaxed max-w-sm">
+            Empowering brands with futuristic digital marketing, high-converting web engineering, and measurable business growth.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="lg:col-span-3">
+          <h4 class="font-display text-sm font-bold uppercase tracking-wider text-white mb-4">Quick Links</h4>
+          <ul class="space-y-2.5 text-sm text-slate-400">
+            <li><a href="#home" class="hover:text-electric-400 transition-colors">Home</a></li>
+            <li><a href="#services" class="hover:text-electric-400 transition-colors">Services</a></li>
+            <li><a href="#about" class="hover:text-electric-400 transition-colors">About Us</a></li>
+            <li><a href="#contact" class="hover:text-electric-400 transition-colors">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Details -->
+        <div class="lg:col-span-4">
+          <h4 class="font-display text-sm font-bold uppercase tracking-wider text-white mb-4">Contact Info</h4>
+          <ul class="space-y-3 text-sm text-slate-400">
+            <li class="flex items-center gap-2.5">
+              <span class="text-electric-500 font-bold">&#9993;</span>
+              <a href="mailto:aniketkumar45445@gmail.com" class="hover:text-white transition-colors break-all">aniketkumar45445@gmail.com</a>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <span class="text-electric-500 font-bold">&#9742;</span>
+              <a href="tel:+917367853074" class="hover:text-white transition-colors">+91 7367853074</a>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <span class="text-electric-500 font-bold">&#9873;</span>
+              <span>Aya Nagar, New Delhi</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom Copyright -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <p>&copy; <span id="current-year"></span> Spark Grow. All Rights Reserved.</p>
+        <p class="font-display uppercase tracking-wider text-slate-400">Engineered For Exponential Growth</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== INTERACTIVE JAVASCRIPT ==================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Set current copyright year
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+
+      // Mobile Navigation Toggle
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const iconOpen = document.getElementById('menu-icon-open');
+      const iconClose = document.getElementById('menu-icon-close');
+      const mobileLinks = document.querySelectorAll('.mobile-link');
+
+      function toggleMobileMenu() {
+        const isHidden = mobileMenu.classList.contains('hidden');
+        if (isHidden) {
+          mobileMenu.classList.remove('hidden');
+          iconOpen.classList.add('hidden');
+          iconClose.classList.remove('hidden');
+        } else {
+          mobileMenu.classList.add('hidden');
+          iconOpen.classList.remove('hidden');
+          iconClose.classList.add('hidden');
+        }
+      }
+
+      mobileBtn.addEventListener('click', toggleMobileMenu);
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          iconOpen.classList.remove('hidden');
+          iconClose.classList.add('hidden');
+        });
+      });
+
+      // Contact Form Handling with Instant Confirmation & Pre-filled Mailto Link
+      const contactForm = document.getElementById('contact-form');
+      const formFeedback = document.getElementById('form-feedback');
+      const feedbackText = document.getElementById('feedback-text');
+      const directMailtoBtn = document.getElementById('direct-mailto-btn');
+      const resetFormBtn = document.getElementById('reset-form-btn');
+
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById('name').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const service = document.getElementById('service').value;
+        const message = document.getElementById('message').value.trim();
+
+        // Construct pre-filled mailto link so user can optionally launch their email client immediately
+        const subject = encodeURIComponent(`New Growth Inquiry: ${service} - ${name}`);
+        const body = encodeURIComponent(
+          `Name: ${name}\nPhone: ${phone}\nEmail: ${email}\nService Needed: ${service}\n\nProject Details:\n${message}`
+        );
+        directMailtoBtn.href = `mailto:aniketkumar45445@gmail.com?subject=${subject}&body=${body}`;
+
+        feedbackText.textContent = `Thank you, ${name}! Your request for "${service}" has been logged. Our team will reach out to you at ${phone} or ${email} shortly.`;
+
+        contactForm.classList.add('hidden');
+        formFeedback.classList.remove('hidden');
+      });
+
+      resetFormBtn.addEventListener('click', () => {
+        contactForm.reset();
+        formFeedback.classList.add('hidden');
+        contactForm.classList.remove('hidden');
+      });
+    });
+  </script>
+</body>
+</html>
